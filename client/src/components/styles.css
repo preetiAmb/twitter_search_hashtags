@@ -1,0 +1,81 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: black;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+}
+
+section {
+  max-height: 40%;
+  overflow: auto;
+  border-bottom: 1px solid;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin-top: 50px;
+}
+h1 {
+  color: red;
+}
+.tag-container {
+  display: grid;
+  max-height: 100%;
+  align-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+  padding: 10px;
+}
+.tag {
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 25px;
+  margin: 2px 5px 2px 0px;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 16px;
+}
+
+
+.search {
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+.tag span {
+  margin-left: 5px;
+  cursor: pointer;
+  color: green;
+}
+
+header {
+  color: white;
+  border: none;
+  border-bottom: 1rem;
+  border-bottom: 2px solid white;
+}
+section:last-child {
+  border: none;
+}
+footer {
+  color: white;
+}
