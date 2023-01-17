@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "./styles.css";
-//import Card from './Card';
 import { useAPI } from "./contextAPI";
 
 function SearchList() {
   const { loadTweetData } = useAPI();
-  const [isLoading, setIsLoading] = useState(false);
-  const [tweets, setTweets] = useState([]);
    const [tags, setTags] = useState([]);
 
   const extract = require("mention-hashtag");
@@ -29,15 +26,7 @@ function SearchList() {
             {tag}
           </div>
         );
-      }) : <h1>No Result Found</h1>}
-
-{/* {loadTweetData.filter((tweet) => {
-    const hashtag = tweet.entities.hashtags;
-      setTweets(hashtag)
-      return (
-       {tweets}
-      )
-  })}; */}
+      }) : <h1>Loading....</h1>}
       </div>
   );
 }

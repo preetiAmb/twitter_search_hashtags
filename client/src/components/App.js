@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <ApiContextProvider>
         <Header />
-       
-          <Search />
-        
-        <Footer />
+
+        <Search />
+
+        {/* <Footer /> */}
       </ApiContextProvider>
     </div>
   );

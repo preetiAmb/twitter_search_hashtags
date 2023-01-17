@@ -6,7 +6,7 @@ import "./styles.css";
 function Search() {
   const [searchField, setSearchField] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-  const [searchInput, setSearchInput] = useState('')
+  const [searchInput, setSearchInput] = useState("");
   const { loadTweetData } = useAPI();
   const [tags, setTags] = useState([]);
 
@@ -19,27 +19,26 @@ function Search() {
   });
 
   const searchItems = (searchValue) => {
-    setSearchInput(searchValue)
-    if (searchInput !== '') {
-        const filteredData = hashtags.filter((item) => {
-            return (item).toLowerCase().includes(searchInput.toLowerCase())
-        })
-        setFilteredResults(filteredData)
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const filteredData = hashtags.filter((item) => {
+        return item.toLowerCase().includes(searchInput.toLowerCase());
+      });
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(hashtags);
     }
-    else{
-        setFilteredResults(hashtags)
-    }
-}
-
+  };
 
   function searchList() {
     return <SearchList filteredtags={filteredtags} />;
   }
 
   return (
-    <section className="garamond">
-      <div className="navy georgia ma0 grow">
-        <h2 className="f2">Search twitter tags</h2>
+    <section className="container">
+      <main>
+      <div>
+        <h2 className="title">Search twitter tags</h2>
       </div>
       <form form action="/" method="post">
         <input
@@ -47,22 +46,22 @@ function Search() {
           className="search"
           placeholder="Search hashtags"
           onChange={(e) => searchItems(e.target.value)}
-        />       
+        />
       </form>
       <div className="tag-container">
-      {tags && searchInput.length > 0 ? (
-        filteredResults.map((tag, index) => {
-          return (
-            <div key={index} className="tag">
-              {tag}
-            </div>
-          );
-        })
-      ) : (
-        <div>{searchList()}</div>
-      )}
+        {tags && searchInput.length > 0 ? (
+          filteredResults.map((tag, index) => {
+            return (
+              <div key={index} className="tag">
+                {tag}
+              </div>
+            );
+          })
+        ) : (
+          <div>{searchList()}</div>
+        )}
       </div>
-    
+      </main>
     </section>
   );
 }

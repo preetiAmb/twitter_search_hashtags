@@ -22,18 +22,17 @@ const ApiContextProvider = ({ children }) => {
     try {
       callApi(HTTP_GET)
         .then((response) => response.json())
-        .then(
-          (data) => {
-            setLoadTweetData(data.filteredTags);
-          });
+        .then((data) => {
+          setLoadTweetData(data.filteredTags);
+        });
     } catch (e) {
       console.log(e);
     }
   };
 
   useEffect(() => {
-    TweetData()
-  },[]);
+    TweetData();
+  }, []);
 
   return (
     <ApiContext.Provider value={{ loadTweetData }}>
