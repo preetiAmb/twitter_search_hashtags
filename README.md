@@ -1,12 +1,12 @@
 ﻿# twitter_search_hashtags
 
-Node.js/typeScript/express (node framework)/nodemon/concurrently
-React.js
-CSS/Grid/flex
+-Node.js/typeScript/express (node framework)/nodemon/concurrently
+-React.js
+-CSS/Grid/flex
 
 NPM packages
-Twitter-api-v2
-find-hashtags
+-Twitter-api-v2
+-find-hashtags
 
 SVT
 Web app - receive Twitter hashtag or an RSS link and generate a tag cloud of
