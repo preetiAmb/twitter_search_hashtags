@@ -1,6 +1,8 @@
+import "./styles.css";
+
 const Footer = () => {
     return (
-        <footer>
+        <footer className="footer">
             <h2>Contact information</h2>
             <h4>Address: Källtorpsvägen 9, Täby</h4>
             <h4>email: preetijav@gmail.com</h4>

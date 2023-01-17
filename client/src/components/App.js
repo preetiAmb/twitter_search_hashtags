@@ -9,11 +9,12 @@ function App() {
   return (
     <div className="App">
       <ApiContextProvider>
-        <Header />
+        <div className="content">
+          <Header />
 
-        <Search />
-
-        {/* <Footer /> */}
+          <Search />
+        </div>
+        <Footer />
       </ApiContextProvider>
     </div>
   );

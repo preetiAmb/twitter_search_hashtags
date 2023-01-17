@@ -1,15 +1,16 @@
 html,
 body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
   background: black;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
-.container {
+.content {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding: 20px;
  }
 
 .title {
@@ -90,6 +91,27 @@ section:last-child {
   border: none;
 }
 footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} */
+
+
+html, body {
+  /* IE 10-11 didn't like using min-height */
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+}
+.footer {
+  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+  padding: 20px;
 }
