@@ -15,10 +15,24 @@ const userClient = new TwitterApi({
     accessToken: "835833912035328000-BxuZamlwagGQYT6reRPklTpLk6YWCAz",
     accessSecret: "d7YjK03tb113Xmj3Anozke1oIXg07zLYAQXGk2iyLIDyz",
 });
-
+// app.get("/tweets/feeds", async (req, res) => {
+//   try {
+//     const result = await userClient.v2.get("users/${userId}/tweets", {
+//       "expansions": "author_id",
+//       max_results: 100,
+//       "tweet.fields": "created_at",
+//     });
+//     const tweetData = result;
+//     //console.log(result)
+//     res.json({ tweetData });
+//   } catch (e) {
+//     // Request failed!
+//     const errors = TwitterApi.getErrors(e); // ErrorV1[]
+//     console.log("Received errors from v2 API", errors);
+//   }
+// });
 const appOnlyClientFromConsumer = await userClient.appLogin();
-const foundUsers = await userClient.v1.searchUsers("Preeti")
-
+const foundUsers = await userClient.v1.searchUsers("Preeti");
 app.get("/hashtags", async (request, response) => {
     const { query, pathname: path } = Url.parse(request.url, true);
     console.log(query);
@@ -40,7 +54,6 @@ app.get("/hashtags", async (request, response) => {
             const tweetHashtags = data.entities.hashtags;
             return tweetHashtags;
         });
-        //console.log(tweetData)
         response.send({ filteredTags });
         response.json({ filteredTags });
     }
