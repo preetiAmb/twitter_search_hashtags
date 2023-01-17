@@ -7,9 +7,21 @@ const useApiContext = () => useContext(ApiContext);
 
 const ApiContextProvider = ({ children }) => {
   const [loadTweetData, setLoadTweetData] = useState([]);
+  const [loadTweetFeeds, setLoadTweetFeeds] = useState([]);
 
-  const callApi = (method, body = null) => {
+  const callApiTags = (method, body = null) => {
     return fetch("http://localhost:9000/hashtags", {
+      method,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: body ? JSON.stringify(body) : null,
+    });
+  };
+
+
+  const callApiTimeLine = (method, body = null) => {
+    return fetch("http://localhost:9000/feeds", {
       method,
       headers: {
         "Content-Type": "text/plain",
@@ -20,7 +32,7 @@ const ApiContextProvider = ({ children }) => {
 
   const TweetData = () => {
     try {
-      callApi(HTTP_GET)
+      callApiTags(HTTP_GET)
         .then((response) => response.json())
         .then((data) => {
           setLoadTweetData(data.filteredTags);
@@ -30,12 +42,30 @@ const ApiContextProvider = ({ children }) => {
     }
   };
 
+  const TweetTimeLineData = () => {
+    try {
+      callApiTimeLine(HTTP_GET)
+        .then((response) => response.json())
+        .then((data) => {
+          setLoadTweetFeeds(data.feedsResult);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const filteredTags = loadTweetData.filter((data) => {
+    const tweetHashtags = data.entities.hashtags;
+    return tweetHashtags;
+  });
+
   useEffect(() => {
     TweetData();
+    TweetTimeLineData();
   }, []);
 
   return (
-    <ApiContext.Provider value={{ loadTweetData }}>
+    <ApiContext.Provider value={{ loadTweetData, loadTweetFeeds }}>
       {children}
     </ApiContext.Provider>
   );

@@ -2,6 +2,7 @@ import ApiContextProvider from "./contextAPI";
 import Search from "./Search";
 import Header from "./Header";
 import Footer from "./Footer";
+import RssFeeds from "./RssFeeds";
 import "./styles.css";
 import "./App.css";
 
@@ -13,6 +14,8 @@ function App() {
           <Header />
 
           <Search />
+
+          {/* <RssFeeds /> */}
         </div>
         <Footer />
       </ApiContextProvider>
