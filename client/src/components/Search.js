@@ -18,6 +18,15 @@ function Search() {
     return tag.toLowerCase().includes(searchField.toLowerCase());
   });
 
+  const occurrence = hashtags.reduce((finalMap, item) => {
+ 
+    finalMap[item] = ++finalMap[item] || 1; 
+    
+    return finalMap;
+  } , {})
+  
+  console.log(occurrence)
+
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchInput !== "") {
@@ -29,6 +38,9 @@ function Search() {
       setFilteredResults(hashtags);
     }
   };
+
+
+
 
   function searchList() {
     return <SearchList filteredtags={filteredtags} />;
