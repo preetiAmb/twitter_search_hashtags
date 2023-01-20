@@ -13,10 +13,10 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 9000;
 
 const userClient = new TwitterApi({
-  appKey: "V1HE1hmHHNwYTuF9JcnRUPPYZ",
-  appSecret: "Wi8HvMSrvDA1KNscq1oQLmlvJTweEJW0OWoFu4fKRCpXpvvUFn",
-  accessToken: "835833912035328000-BxuZamlwagGQYT6reRPklTpLk6YWCAz",
-  accessSecret: "d7YjK03tb113Xmj3Anozke1oIXg07zLYAQXGk2iyLIDyz",
+  appKey: "process.env.KEY",
+  appSecret: "process.env.SECRET",
+  accessToken: "process.env.TOKEN",
+  accessSecret: "process.env.ACCESSSECRET",
 });
 
 
@@ -33,7 +33,7 @@ const homeTimeline = await userClient.v1.homeTimeline();
 // console.log('Fetched tweet IDs in next page:', nextHomePage.tweets.map(tweet => tweet));
 
 app.get("/feeds", async (request, response) => {
-  const id = '835833912035328000'
+  const id = 'process.env.USERID'
   try {
     const result = await userClient.v2.get(`users/${id}/tweets` , {
       expansions: ['attachments.media_keys', 'attachments.poll_ids', 'referenced_tweets.id'],
